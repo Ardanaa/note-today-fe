@@ -141,7 +141,7 @@ function Home() {
 					</Button>
 				</Link>
 				<Link to="/about">
-					<Button className="w-100"variant="success">Go to about page</Button>
+					<Button className="w-100" variant="success">Go to about page</Button>
 				</Link>
 			</Popover.Body>
 		</Popover>
@@ -154,7 +154,7 @@ function Home() {
 					<Container>
 						<NavDropdown title="Account" id="basic-nav-dropdown">
 							<NavDropdown.Item>Signed in as: {user.name}</NavDropdown.Item>
-							<NavDropdown.Item onClick={(e) => logout(e)}>
+							<NavDropdown.Item>
 								Logout
 							</NavDropdown.Item>
 						</NavDropdown>
@@ -191,61 +191,60 @@ function Home() {
 				</OverlayTrigger>
 
 				<Container className="mt-5">
-					{post
-						.map((post) => (
-							<Row key={post.id}>
-								<Col md={10} className="m-auto">
-									<Card
-										className="shadow text-white bg-transparent "
-										style={{ marginTop: "2rem" }}
-										border="dark"
-									>
-										<img
-											src={`http://localhost:2000/public/files/${post.picture}`}
-											alt=""
-											style={{ objectFit: "cover", minHeight: "300px" }}
-										/>
+					{post.map((post) => (
+						<Row key={post.id}>
+							<Col md={10} className="m-auto">
+								<Card
+									className="shadow text-white bg-transparent "
+									style={{ marginTop: "2rem" }}
+									border="dark"
+								>
+									<img
+										src={`http://localhost:2000/public/files/${post.picture}`}
+										alt=""
+										style={{ objectFit: "cover", minHeight: "300px" }}
+									/>
 
-										<div className="card-body">
-											<p className="card-text fw-bold fs-1">
-												{post.title}{" "}
-												<span className="fs-6 text-white-50">
-													by: {user.name}
-												</span>
-											</p>
-											<Badge bg="info">Created At: {post.createdAt}</Badge>{" "}
-											<br></br>
-											<Badge bg="info">Updated At: {post.updatedAt}</Badge>{" "}
-											<p className="card-text mt-4 fs-5">{post.description}</p>
-											<Dropdown style={{ marginLeft: "720px" }}>
-												<Dropdown.Toggle variant="dark" id="dropdown-basic">
-													Hate this post?
-												</Dropdown.Toggle>
+									<div className="card-body">
+										<p className="card-text fw-bold fs-1">
+											{post.title}{" "}
+											<span className="fs-6 text-white-50">
+												by: {user.name}
+											</span>
+										</p>
+										<Badge bg="info">Created At: {post.createdAt}</Badge>{" "}
+										<br></br>
+										<Badge bg="info">Updated At: {post.updatedAt}</Badge>{" "}
+										<p className="card-text mt-4 fs-5">{post.description}</p>
+										<Dropdown style={{ marginLeft: "720px" }}>
+											<Dropdown.Toggle variant="dark" id="dropdown-basic">
+												Hate this post?
+											</Dropdown.Toggle>
 
-												<Dropdown.Menu variant="dark">
-													<Dropdown.Item>
-														<Link className="" to={`/update/${post.id}`}>
-															<Button className="w-100" variant="warning">
-																Edit
-															</Button>
-														</Link> 
-													</Dropdown.Item>
-													<Dropdown.Item>
-														<Button
-															className="w-100"
-															variant="danger"
-															onClick={(e) => handleShowModal(e, post)}
-														>
-															Delete
+											<Dropdown.Menu variant="dark">
+												<Dropdown.Item>
+													<Link className="" to={`/update/${post.id}`}>
+														<Button className="w-100" variant="warning">
+															Edit
 														</Button>
-													</Dropdown.Item>
-												</Dropdown.Menu>
-											</Dropdown>
-										</div>
-									</Card>
-								</Col>
-							</Row>
-						))
+													</Link>
+												</Dropdown.Item>
+												<Dropdown.Item>
+													<Button
+														className="w-100"
+														variant="danger"
+														onClick={(e) => handleShowModal(e, post)}
+													>
+														Delete
+													</Button>
+												</Dropdown.Item>
+											</Dropdown.Menu>
+										</Dropdown>
+									</div>
+								</Card>
+							</Col>
+						</Row>
+					))
 						.reverse()}
 				</Container>
 
