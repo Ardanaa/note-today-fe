@@ -27,7 +27,7 @@ export default function Post() {
       postPayload.append("picture", pictureField);
 
       const postRequest = await axios.post(
-        "http://localhost:2000/posts",
+        "https://note-today-be.herokuapp.com/posts",
         postPayload,
         {
           headers: {

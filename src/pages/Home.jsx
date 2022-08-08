@@ -54,7 +54,7 @@ function Home() {
 
 				// 2. Check token validity from API
 				const currentUserRequest = await axios.get(
-					"http://localhost:2000/auth/me",
+					"https://note-today-be.herokuapp.com/auth/me",
 					{
 						headers: {
 							Authorization: `Bearer ${token}`,
@@ -73,7 +73,7 @@ function Home() {
 		};
 
 		const postData = async () => {
-			const response = await axios.get(`http://localhost:2000/api/posts`);
+			const response = await axios.get(`https://note-today-be.herokuapp.com/api/posts`);
 			console.log(response);
 			const data = await response.data.data.posts;
 			console.log(data);
@@ -92,7 +92,7 @@ function Home() {
 			const token = localStorage.getItem("token");
 
 			const createRequest = await axios.delete(
-				`http://localhost:2000/posts/${postToDelete.id}`,
+				`https://note-today-be.herokuapp.com/posts/${postToDelete.id}`,
 				{
 					headers: {
 						Authorization: `Bearer ${token}`,
@@ -159,7 +159,7 @@ function Home() {
 							</NavDropdown.Item>
 						</NavDropdown>
 						<Navbar.Brand className="justify-content-start">
-							Take a look of your journey,
+							Take a look of our journey,
 						</Navbar.Brand>
 					</Container>
 				</Navbar>
@@ -200,7 +200,7 @@ function Home() {
 									border="dark"
 								>
 									<img
-										src={`http://localhost:2000/public/files/${post.picture}`}
+										src={`https://note-today-be.herokuapp.com/public/files/${post.picture}`}
 										alt=""
 										style={{ objectFit: "cover", minHeight: "300px" }}
 									/>
@@ -208,9 +208,9 @@ function Home() {
 									<div className="card-body">
 										<p className="card-text fw-bold fs-1">
 											{post.title}{" "}
-											<span className="fs-6 text-white-50">
+											{/* <span className="fs-6 text-white-50">
 												by: {user.name}
-											</span>
+											</span> */}
 										</p>
 										<Badge bg="info">Created At: {post.createdAt}</Badge>{" "}
 										<br></br>

@@ -30,7 +30,7 @@ export default function Update() {
       postPayload.append("picture", pictureField);
 
       const postRequest = await axios.put(
-        `http://localhost:2000/posts/${id}`,
+        `https://note-today-be.herokuapp.com/posts/${id}`,
         postPayload,
         {
           headers: {
@@ -57,7 +57,7 @@ export default function Update() {
   const getPosts = async () => {
     try {
       const responsePosts = await axios.get(
-        `http://localhost:2000/api/posts/${id}`
+        `https://note-today-be.herokuapp.com/api/posts/${id}`
       );
 
       const dataPosts = await responsePosts.data.data.getdata;

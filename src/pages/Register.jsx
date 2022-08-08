@@ -28,7 +28,7 @@ export default function Register() {
       };
 
       const registerRequest = await axios.post(
-        "http://localhost:2000/auth/register",
+        "https://note-today-be.herokuapp.com/register",
         userToRegisterPayload
       );
 

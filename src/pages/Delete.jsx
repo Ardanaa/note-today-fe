@@ -13,7 +13,7 @@ export default function Login() {
       const token = localStorage.getItem("token");
 
       const createRequest = await axios.delete(
-        `http://localhost:2000/posts/${id}`,
+        `https://note-today-be.herokuapp.com/posts/${id}`,
 
         {
           headers: {
