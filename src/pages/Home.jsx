@@ -154,7 +154,7 @@ function Home() {
 					<Container>
 						<NavDropdown title="Account" id="basic-nav-dropdown">
 							<NavDropdown.Item>Signed in as: {user.name}</NavDropdown.Item>
-							<NavDropdown.Item>
+							<NavDropdown.Item onClick={(e) => logout(e)}>
 								Logout
 							</NavDropdown.Item>
 						</NavDropdown>
